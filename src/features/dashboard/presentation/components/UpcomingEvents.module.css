@@ -1,0 +1,46 @@
+.agenda { width:100%; min-width:0; max-width:960px; margin:4px 0 20px; padding:12px 0; text-align:left; }
+.header { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:8px; padding:0 2px 12px; }
+.heading { display:flex; align-items:center; gap:9px; }
+.dateBadge { display:flex; flex-direction:column; align-items:center; justify-content:center; width:30px; height:35px; border-radius:9px; background:#84c4f00b; border:1px solid #8ac9ef20; }
+.dateBadge small { color:#779db9; font-size:6px; letter-spacing:1px; text-transform:uppercase; }
+.dateBadge strong { color:#cbe9ff; font-size:16px; font-weight:500; line-height:1.2; }
+.eyebrow { display:none; }
+.header h2 { margin:0; font-size:15px; font-weight:500; letter-spacing:-.3px; color:#d8edfc; }
+.switch { display:flex; gap:2px; }
+.day { min-width:0; min-height:44px; padding:0 9px; border-radius:11px; color:#7d9db8; font-size:10px; }
+.day[aria-pressed='true'] { color:#d0efff; background:#74b8e815; }
+.events { display:flex; gap:10px; overflow-x:auto; scroll-snap-type:x mandatory; scrollbar-width:none; margin:0; padding:2px 1px 8px; list-style:none; overscroll-behavior-x:contain; }
+.events::-webkit-scrollbar { display:none; }
+.events:focus-visible { outline:2px solid #8ccfff; outline-offset:3px; border-radius:17px; }
+.event { --event-color:#9acfff; display:flex; align-items:center; flex:0 0 86%; min-width:0; scroll-snap-align:start; gap:16px; padding:18px 16px; border-radius:18px; border:1px solid color-mix(in srgb,var(--event-color) 20%,transparent); background:radial-gradient(ellipse at 0 0,color-mix(in srgb,var(--event-color) 10%,transparent),transparent 80%),linear-gradient(130deg,#112d46,#091e33); }
+.event[data-category='personal'] { --event-color:#c3b4f5; }
+.event[data-category='wellness'] { --event-color:#96decb; }
+.when { display:flex; flex-direction:column; align-items:center; flex-shrink:0; gap:8px; border-right:1px solid #88b9d624; padding-right:16px; }
+.when time { font-size:23px; line-height:1; font-weight:500; letter-spacing:-1px; font-variant-numeric:tabular-nums; color:var(--event-color); }
+.when span { font-size:9px; color:#7299b6; }
+.info { min-width:0; }
+.category { display:block; margin-bottom:5px; color:var(--event-color); font-size:7px; letter-spacing:1.3px; text-transform:uppercase; opacity:.75; }
+.info h3 { margin:0; color:#d6eafb; font-size:13px; font-weight:500; line-height:1.4; overflow-wrap:anywhere; }
+.info p { margin:6px 0 0; color:#7c9fb9; font-size:9px; line-height:1.4; }
+.status { padding:14px 0; color:#a2bed3; font-size:12px; }
+@media(min-width:640px) { .events { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); overflow:visible; } .event { gap:12px; padding:17px 12px; } .when { padding-right:12px; } .when time { font-size:21px; } .info h3 { font-size:12px; } }
+/* Cinematic event scenes, with restrained motion behind readable copy. */
+.event { position:relative; isolation:isolate; min-height:155px; align-items:flex-end; overflow:hidden; background:#0b2035; padding:18px 16px; }
+.scene { position:absolute; z-index:-3; inset:0; width:100%; height:100%; object-fit:cover; object-position:65% center; animation:sceneDrift 14s ease-in-out infinite alternate; }
+.event::before { content:''; position:absolute; z-index:-2; inset:0; background:linear-gradient(0deg,#041223f5, #06182b75 48%,#09192b08),linear-gradient(90deg,#05162d90,transparent 80%); }
+.event:nth-child(2) .scene { animation-delay:-5s; }
+.event:nth-child(3) .scene { animation-delay:-9s; }
+.when { position:relative; z-index:1; border-color:#b2dcff35; }
+.when time { color:#e0f3ff; text-shadow:0 2px 10px #00000060; }
+.when span { color:#a4c1d5; }
+.info { position:relative; z-index:1; }
+.info h3 { color:#edf7ff; text-shadow:0 2px 10px #00000060; }
+.info p { color:#a9c4d9; }
+.category { color:#c4e6fa; }
+.sheen { position:absolute; z-index:-1; top:0; bottom:0; left:-50%; width:35%; background:linear-gradient(90deg,transparent,#c0e7ff0d,transparent); transform:skewX(-20deg); animation:eventLight 12s ease-in-out infinite; pointer-events:none; }
+.event:nth-child(2) .sheen { animation-delay:-4s; }
+.event:nth-child(3) .sheen { animation-delay:-8s; }
+@keyframes sceneDrift { from { transform:scale(1.02) translateX(-1%); } to { transform:scale(1.1) translateX(1%); } }
+@keyframes eventLight { 0%,35% { left:-50%; opacity:0; } 45% { opacity:1; } 65%,100% { left:120%; opacity:0; } }
+@media(min-width:640px) { .event { min-height:170px; padding:16px 12px; } }
+@media(prefers-reduced-motion:reduce) { .scene,.sheen { animation:none; } .sheen { display:none; } }

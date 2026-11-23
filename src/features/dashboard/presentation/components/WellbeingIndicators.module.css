@@ -1,0 +1,43 @@
+.column { position: absolute; z-index: 2; top: 22px; bottom: 28px; width: 65px; display: flex; flex-direction: column; justify-content: space-around; gap: 14px; pointer-events: none; }
+.left { left: 0; }
+.right { right: 0; }
+.metric { display: flex; flex-direction: column; align-items: center; gap: 7px; animation: indicatorIn .6s cubic-bezier(.2,.7,.3,1) var(--enter-delay, 0ms) both; }
+.circle { --ring-size: 48px; position: relative; display: block; width: var(--ring-size); min-width: var(--ring-size); height: var(--ring-size); padding: 0; border-radius: 50%; border: 0; background: transparent; box-shadow: none; overflow: visible; pointer-events: auto; cursor: pointer; transition: transform .22s ease, box-shadow .22s ease; }
+.circle::before { content: none; }
+.circle:hover, .circle[aria-expanded='true'] { transform: scale(1.09); background: transparent; box-shadow: 0 0 24px #42bfff25; }
+.circle:focus-visible, .circle[data-focus-visible='true'] { outline: 2px solid var(--metric-color); outline-offset: 4px; }
+.circle:active { transform: scale(.97); }
+.progressRoot { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.track { width: 100%; height: 100%; display: block; overflow: visible; }
+.trackCircle { stroke: #51779538; }
+.fillCircle { stroke: var(--metric-color); stroke-linecap: round; filter: drop-shadow(0 0 2px #66caff2e); transition: stroke-dashoffset .85s cubic-bezier(.2,.7,.3,1); }
+.value { position: absolute; inset: 0; display: grid; place-items: center; margin: 0; padding: 0; color: #e5f3ff; font-size: 11px; line-height: 1; font-weight: 500; font-variant-numeric: tabular-nums; pointer-events: none; }
+.sparkCircle { fill: none; stroke: #e8fcff; stroke-linecap: round; filter: drop-shadow(0 0 1.5px var(--metric-color)); animation: progressSpark 3.8s linear infinite; animation-play-state: var(--ambient-play, running); }
+@keyframes progressSpark { from { stroke-dashoffset: 0; } to { stroke-dashoffset: -100; } }
+.label { color: #b2cbe2; font-size: 10px; line-height: 1.4; text-align: center; max-width: 65px; }
+.label { transition: color .2s ease; }
+.metric[data-active='true'] .label { color: var(--metric-color); }
+.metric[data-active='true'] .circle { border-color: var(--metric-color); box-shadow: 0 0 28px #42bfff30; }
+.metric[data-active='true']::after { opacity: 1; }
+@media (min-width: 480px) { .column { width: 86px; } .circle { --ring-size: 55px; } .label { font-size: 11px; max-width: 86px; } .value { font-size: 12px; } }
+@media (min-width: 900px) {
+  .column { width: 180px; top: 38px; bottom: 44px; }
+  .metric { flex-direction: row; gap: 14px; position: relative; }
+  .left .metric { flex-direction: row-reverse; }
+  .right .metric { flex-direction: row; }
+  .circle { --ring-size: 62px; }
+  .value { font-size: 14px; }
+  .label { text-align: left; font-size: 13px; max-width: 98px; }
+  .left .label { text-align: right; }
+  .left .metric::after, .right .metric::after { content: ''; position: absolute; width: 27px; height: 1px; background: linear-gradient(90deg, #79d9ff35, transparent); top: 50%; }
+  .left .metric::after { right: -20px; }
+  .right .metric::after { left: -20px; transform: rotate(180deg); }
+}
+.popover { max-width: min(240px, calc(100vw - 32px)); border: 1px solid #6bbfff55; border-radius: 16px; background: #0b2138; color: #e7f4ff; box-shadow: 0 18px 50px #00000066; }
+.dialog { padding: 18px; outline: none; }
+.detailHeading { font-size: 14px; font-weight: 500; color: #b7d8f0; margin: 0 0 8px; }
+.detailValue { display: block; font-size: 30px; font-weight: 500; color: var(--metric-color, #eaf8ff); letter-spacing: -1px; font-variant-numeric: tabular-nums; }
+.detailCopy { font-size: 13px; line-height: 1.7; color: #a6c3dd; margin: 8px 0 12px; }
+.demo { font-size: 11px; color: #829fb9; }
+@keyframes indicatorIn { from { opacity: 0; transform: translateY(12px) scale(.94); } to { opacity: 1; transform: translateY(0) scale(1); } }
+@media (prefers-reduced-motion: reduce) { .metric { animation: none; } .sparkCircle { display: none; } .circle, .fillCircle, .label { transition: none; } .circle:hover, .circle:active { transform: none; } }

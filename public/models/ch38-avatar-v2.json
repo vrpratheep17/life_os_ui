@@ -1,0 +1,43 @@
+{
+  "source": "Ch38_nonPBR.fbx",
+  "animations": [
+    {
+      "name": "Idle",
+      "duration": 8
+    },
+    {
+      "name": "Wave",
+      "duration": 4.3
+    },
+    {
+      "name": "Nod",
+      "duration": 2.6
+    },
+    {
+      "name": "LookAround",
+      "duration": 5
+    },
+    {
+      "name": "Work",
+      "duration": 6
+    },
+    {
+      "name": "Blink",
+      "duration": 0.22
+    },
+    {
+      "name": "Sleep",
+      "duration": 6
+    }
+  ],
+  "animationOrigin": "Procedurally authored for the imported skeleton; source contained no usable motion clips.",
+  "textureLimit": 1024,
+  "height": 2.35,
+  "sourceBytes": 52055952,
+  "runtimeBytes": 7382204,
+  "handLift": 0.7596046884615345,
+  "validation": {
+    "errors": 0,
+    "warnings": 7
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "source": "Ch38_nonPBR.fbx",
+  "animations": [
+    "Idle",
+    "Wave"
+  ],
+  "animationOrigin": "Procedurally authored for the imported skeleton; source contained no usable motion clips.",
+  "textureLimit": 1024,
+  "height": 2.35,
+  "sourceBytes": 52055952,
+  "runtimeBytes": 6331844,
+  "handLift": 1.1043010600037155,
+  "validation": {
+    "errors": 0,
+    "warnings": 7
+  }
+}

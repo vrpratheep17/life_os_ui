@@ -1,0 +1,40 @@
+{
+  "name": "LifeOS_Avatar",
+  "license": "Project-owned procedural artwork; no third-party model assets.",
+  "generator": "scripts/generate-avatar.mjs",
+  "units": "metres",
+  "up": "+Y",
+  "forward": "+Z",
+  "bones": [
+    "Hips",
+    "Spine",
+    "Chest",
+    "Neck",
+    "Head",
+    "LeftUpperArm",
+    "LeftForearm",
+    "LeftHand",
+    "LeftThigh",
+    "LeftShin",
+    "LeftFoot",
+    "RightUpperArm",
+    "RightForearm",
+    "RightHand",
+    "RightThigh",
+    "RightShin",
+    "RightFoot"
+  ],
+  "animations": [
+    {
+      "name": "Idle",
+      "duration": 4,
+      "loop": true
+    },
+    {
+      "name": "Wave",
+      "duration": 2.6,
+      "loop": false
+    }
+  ],
+  "note": "Stylized original model. OBJ is a static geometry export; GLB contains materials, skinning, and animation."
+}
